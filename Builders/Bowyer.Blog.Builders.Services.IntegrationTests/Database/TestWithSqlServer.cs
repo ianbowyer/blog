@@ -7,13 +7,13 @@ namespace Bowyer.Blog.Builders.Services.IntegrationTests.Database
     /// <summary>
     /// The Test with Sql Lite Base class used for testing against a in-memory database.
     /// </summary>
-    /// <seealso cref="System.IDisposable" />
+    /// <seealso cref="IDisposable" />
     public abstract class TestWithSqlServer :IDisposable
     {
         private bool _isDisposed;
 
         /// <summary>
-        /// Gets the PinIoT database context.
+        /// Gets the Contacts database context.
         /// </summary>
         protected ContactsDbContext DbContext { get; }
 

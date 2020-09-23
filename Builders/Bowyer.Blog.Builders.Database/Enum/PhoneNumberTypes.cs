@@ -1,14 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bowyer.Blog.Builders.Database.Enum
+﻿namespace Bowyer.Blog.Builders.Database.Enum
 {
+    /// <summary>
+    ///
+    /// </summary>
     public enum PhoneNumberTypes
     {
+        /// <summary>
+        /// Home
+        /// </summary>
         Home = 1,
-        Mobile =2,
+
+        /// <summary>
+        /// Mobile
+        /// </summary>
+        Mobile = 2,
+
+        /// <summary>
+        /// Work
+        /// </summary>
         Work = 3,
+
+        /// <summary>
+        /// Work mobile
+        /// </summary>
         WorkMobile = 4
     }
 }

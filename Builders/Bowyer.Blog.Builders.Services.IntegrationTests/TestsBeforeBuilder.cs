@@ -1,16 +1,24 @@
 using System.Linq;
-using System.Runtime.InteropServices;
 using Bowyer.Blog.Builders.Database.Entities;
 using Bowyer.Blog.Builders.Services.IntegrationTests.Database;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using NUnit.Framework;
 
 namespace Bowyer.Blog.Builders.Services.IntegrationTests
 {
-    public class Tests: TestWithSqlServer
+    /// <summary>
+    /// Tests Before creating builders to Demonstrate the log way of doing testing.
+    /// </summary>
+    /// <seealso cref="Bowyer.Blog.Builders.Services.IntegrationTests.Database.TestWithSqlServer" />
+    public class TestsBeforeBuilder : TestWithSqlServer
     {
+        /// <summary>
+        /// The service
+        /// </summary>
         private ContactService _service;
 
+        /// <summary>
+        /// Setups this instance.
+        /// </summary>
         [SetUp]
         public void Setup()
         {
@@ -18,6 +26,9 @@ namespace Bowyer.Blog.Builders.Services.IntegrationTests
             _service = new ContactService(DbContext);
         }
 
+        /// <summary>
+        /// Before the builders tests.
+        /// </summary>
         [Test]
         public void BeforeBuildersTests()
         {

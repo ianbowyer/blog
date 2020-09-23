@@ -1,17 +1,23 @@
 using System.Linq;
-using System.Runtime.InteropServices;
 using Bowyer.Blog.Builders.Builders;
-using Bowyer.Blog.Builders.Database.Entities;
 using Bowyer.Blog.Builders.Services.IntegrationTests.Database;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using NUnit.Framework;
 
 namespace Bowyer.Blog.Builders.Services.IntegrationTests
 {
+    /// <summary>
+    /// The tests to demonstrate tests using the Builder classes
+    /// </summary>
     public class TestsAfterBuilder: TestWithSqlServer
     {
+        /// <summary>
+        /// The service under test.
+        /// </summary>
         private ContactService _service;
 
+        /// <summary>
+        /// Setups this instance.
+        /// </summary>
         [SetUp]
         public void Setup()
         {
@@ -19,6 +25,9 @@ namespace Bowyer.Blog.Builders.Services.IntegrationTests
             _service = new ContactService(DbContext);
         }
 
+        /// <summary>
+        /// Test demonstrating creating 3 contacts using a builder.
+        /// </summary>
         [Test]
         public void AfterBuildersTests()
         {
@@ -44,6 +53,9 @@ namespace Bowyer.Blog.Builders.Services.IntegrationTests
             Assert.AreEqual("FirstName2", actual.First().FirstName);
         }
 
+        /// <summary>
+        /// Test demonstrating creating a contact with three different addresses.
+        /// </summary>
         [Test]
         public void AfterBuilderTestsWithAddress()
         {
