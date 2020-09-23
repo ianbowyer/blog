@@ -2,6 +2,7 @@
 {
     public class Address : ContactBase
     {
+        public Contact Contact { get; set; }
         public string HouseNameOrNumber { get; set; }
         public string Street { get; set; }
         public string TownCity { get; set; }

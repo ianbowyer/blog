@@ -15,7 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bowyer.Blog.Builders.Builders\Bowyer.Blog.Builders.Builders.csproj" />
     <ProjectReference Include="..\Bowyer.Blog.Builders.Database\Bowyer.Blog.Builders.Database.csproj" />
+    <ProjectReference Include="..\Bowyer.Blog.Builders.Services\Bowyer.Blog.Builders.Services.csproj" />
   </ItemGroup>
 
 </Project>

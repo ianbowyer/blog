@@ -1,9 +1,8 @@
 ﻿using System;
 using Bowyer.Blog.Builders.Database;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging.Abstractions;
 
-namespace Bowyer.Blog.Builders.Services.IntegrationTests
+namespace Bowyer.Blog.Builders.Services.IntegrationTests.Database
 {
     /// <summary>
     /// The Test with Sql Lite Base class used for testing against a in-memory database.
@@ -18,7 +17,7 @@ namespace Bowyer.Blog.Builders.Services.IntegrationTests
         /// </summary>
         protected ContactsDbContext DbContext { get; }
 
-        private const string InMemoryConnectionString = "Server=localhost;Database=IoTTestDatabase;Trusted_Connection=True;";
+        private const string InMemoryConnectionString = "Server=localhost;Database=TestContactsDatabase;Trusted_Connection=True;";
         protected DbContextOptions<ContactsDbContext> _options;
 
         /// <summary>
@@ -38,8 +37,8 @@ namespace Bowyer.Blog.Builders.Services.IntegrationTests
         /// </summary>
         protected void ClearDatabase()
         {
-            DbContext.Contact.RemoveRange(DbContext.Contact);
             DbContext.Address.RemoveRange(DbContext.Address);
+            DbContext.Contact.RemoveRange(DbContext.Contact);
             DbContext.PhoneNumber.RemoveRange(DbContext.PhoneNumber);
 
             DbContext.SaveChanges();

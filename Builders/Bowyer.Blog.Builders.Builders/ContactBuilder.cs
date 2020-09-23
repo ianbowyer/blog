@@ -60,5 +60,11 @@ namespace Bowyer.Blog.Builders.Builders
             BuilderEntity.EmailAddress = emailAddress;
             return this;
         }
+
+        public ContactBuilder WithAddress(AddressBuilder addressBuilder)
+        {
+            BuilderEntity.Addresses.Add(addressBuilder.Build());
+            return this;
+        }
     }
 }
