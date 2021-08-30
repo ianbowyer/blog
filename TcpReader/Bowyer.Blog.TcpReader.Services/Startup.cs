@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Bowyer.Blog.TcpReader.Database;
+using Bowyer.Blog.TcpReader.Database.Services;
+using Bowyer.Blog.TcpReader.Services.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bowyer.Blog.TcpReader.Services
@@ -34,19 +36,26 @@ namespace Bowyer.Blog.TcpReader.Services
                 {
                     GetConfiguration(environmentName, configApp);
                 })
-                .ConfigureLogging((hostContext, logging) =>
-                {
-                    //logging.ClearProviders();
-                    //logging.SetMinimumLevel(defaultLogLevel);
-                    //logging.AddNLog();
-                })
                 .ConfigureServices((hostContext, services) =>
                 {
+                    // Configuration
                     services.AddOptions<ListenerSettings>();
                     services.Configure<ListenerSettings>(Configuration.GetSection("ListenerSettings"));
-                    services.AddHostedService<IngestionHostedService>();
-                    AddServices(services, Configuration);
+                    services.Configure<ListenerSettings>(options => Configuration.GetSection("listenerSettings").Bind(options));
 
+                    // Hosted service
+                    services.AddHostedService<IngestionHostedService>();
+
+                    // Database
+                    services.AddDbContext<TelemetryDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TelemetryDatabase")));
+                    services.BuildServiceProvider().GetService<TelemetryDbContext>().Database.EnsureCreated();
+
+                    // Services
+                    services.AddScoped<IProcessPacketService, ProcessPacketService>();
+                    services.AddScoped<IIngestionService, IngestionService>();
+                    services.AddScoped<ITelemetryService, TelemetryService>();
+
+                    // Logging
                     var logger = services.BuildServiceProvider().GetService<ILoggerFactory>().CreateLogger(GetType());
                     logger.LogInformation("LogInformation is enabled");
                     logger.LogDebug("LogDebug is enabled");
@@ -55,13 +64,6 @@ namespace Bowyer.Blog.TcpReader.Services
                     logger.LogTrace("LogTrace is enabled");
                     logger.LogWarning("LogWarning is enabled");
                 });
-        }
-
-        protected void AddServices(IServiceCollection services, IConfigurationRoot configuration)
-        {
-            services.Configure<ListenerSettings>(options => configuration.GetSection("listenerSettings").Bind(options));
-            services.AddDbContext<TelemetryDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TelemetryDatabase")));
-            services.AddScoped<IIngestionService, IngestionService>();
         }
 
         private static void GetConfiguration(string environmentName, IConfigurationBuilder configApp)

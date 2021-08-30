@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowyer.Blog.TcpReader.Database", "Bowyer.Blog.TcpReader.Database\Bowyer.Blog.TcpReader.Database.csproj", "{646C281C-58A0-4070-8726-EB6F7100C614}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowyer.Blog.TcpReader.Database", "Bowyer.Blog.TcpReader.Database\Bowyer.Blog.TcpReader.Database.csproj", "{646C281C-58A0-4070-8726-EB6F7100C614}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowyer.Blog.TcpReader.TestSender", "Bowyer.Blog.TcpReader.TestSender\Bowyer.Blog.TcpReader.TestSender.csproj", "{092EED38-6B14-409F-B4F6-294AA709DFDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowyer.Blog.TcpReader.TestSender", "Bowyer.Blog.TcpReader.TestSender\Bowyer.Blog.TcpReader.TestSender.csproj", "{092EED38-6B14-409F-B4F6-294AA709DFDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowyer.Blog.TcpReader.Services", "Bowyer.Blog.TcpReader.Services\Bowyer.Blog.TcpReader.Services.csproj", "{8282E01D-B03D-4183-A921-FFAD7F4B718F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowyer.Blog.TcpReader.Services", "Bowyer.Blog.TcpReader.Services\Bowyer.Blog.TcpReader.Services.csproj", "{8282E01D-B03D-4183-A921-FFAD7F4B718F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowyer.Blog.TcpReader.Dto", "Bowyer.Blog.TcpReader.Dto\Bowyer.Blog.TcpReader.Dto.csproj", "{76B7245F-3D1E-4484-883B-697D2C3C5E79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{8282E01D-B03D-4183-A921-FFAD7F4B718F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8282E01D-B03D-4183-A921-FFAD7F4B718F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8282E01D-B03D-4183-A921-FFAD7F4B718F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76B7245F-3D1E-4484-883B-697D2C3C5E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76B7245F-3D1E-4484-883B-697D2C3C5E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76B7245F-3D1E-4484-883B-697D2C3C5E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76B7245F-3D1E-4484-883B-697D2C3C5E79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

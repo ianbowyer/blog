@@ -15,6 +15,7 @@ namespace Bowyer.Blog.TcpReader.Services
         private readonly ILogger _logger;
 
         private readonly ListenerSettings _listenerSettings;
+        private bool _isDisposed;
 
         public IngestionHostedService(
             IIngestionService listener,
@@ -55,9 +56,25 @@ namespace Bowyer.Blog.TcpReader.Services
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Dispose the object.
+        /// </summary>
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_isDisposed)
+            {
+                _isDisposed = true;
+            }
         }
     }
 }
